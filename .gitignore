@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 # User Defined
 appsettings.Development.json
+Migrations/
