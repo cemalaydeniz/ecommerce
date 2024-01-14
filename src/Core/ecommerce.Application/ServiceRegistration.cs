@@ -7,7 +7,10 @@ namespace ecommerce.Application
     {
         public static void AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(_ => _.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            var currentAssembly = Assembly.GetExecutingAssembly();
+
+            services.AddMediatR(_ => _.RegisterServicesFromAssemblies(currentAssembly));
+            services.AddAutoMapper(currentAssembly);
         }
     }
 }
