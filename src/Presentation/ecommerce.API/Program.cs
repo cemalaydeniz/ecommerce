@@ -1,3 +1,4 @@
+using ecommerce.API.Middlewares;
 using ecommerce.Application;
 using ecommerce.Persistence;
 using ecommerce.Persistence.Authentication;
@@ -47,6 +48,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 
