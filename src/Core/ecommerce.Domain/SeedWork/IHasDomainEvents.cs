@@ -3,7 +3,7 @@
     /// <summary>
     /// Declares that the entity has domain events
     /// </summary>
-    public interface IHasDomainEvent
+    public interface IHasDomainEvents
     {
         void AddDomainEvents(IDomainEvent domainEvent);
         void ClearDomainEvents();

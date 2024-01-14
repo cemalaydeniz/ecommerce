@@ -7,7 +7,7 @@ namespace ecommerce.Domain.SeedWork
     /// Base class of the entites that are not aggregate roots
     /// </summary>
     /// <typeparam name="TKey">The type of the Id of the entity</typeparam>
-    public class BaseEntity<TKey> : IEquatable<BaseEntity<TKey>>, IHasDomainEvent
+    public class BaseEntity<TKey> : IEquatable<BaseEntity<TKey>>, IHasDomainEvents
         where TKey : notnull
     {
         public TKey Id { get; protected set; }
