@@ -1,4 +1,5 @@
-﻿using ecommerce.Domain.Aggregates.UserAggregate.ValueObjects;
+﻿using ecommerce.Domain.Aggregates.RoleAggregate;
+using ecommerce.Domain.Aggregates.UserAggregate.ValueObjects;
 using ecommerce.Domain.SeedWork;
 
 namespace ecommerce.Domain.Aggregates.UserAggregate
@@ -13,6 +14,10 @@ namespace ecommerce.Domain.Aggregates.UserAggregate
         public List<UserAddress> Addresses { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public bool IsDeleted { get; private set; }
+
+        // Navigations
+        public List<Role> _roles = new List<Role>();
+        public IReadOnlyCollection<Role> Roles => _roles.AsReadOnly();
         #endregion
 
         #region Behaviors
