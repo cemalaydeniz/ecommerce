@@ -1,3 +1,4 @@
+using ecommerce.API.Filters;
 using ecommerce.API.Middlewares;
 using ecommerce.Application;
 using ecommerce.Persistence;
@@ -10,7 +11,10 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 //~ Begin - Services
-builder.Services.AddControllers();
+builder.Services.AddControllers(_ =>
+{
+    _.Filters.Add(typeof(ReformatValidationProblemFilter));
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
