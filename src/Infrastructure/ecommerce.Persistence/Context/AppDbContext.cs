@@ -5,12 +5,19 @@ using ecommerce.Domain.Aggregates.RoleAggregate;
 using ecommerce.Domain.Aggregates.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 using ecommerce.Persistence.Configurations;
+using ecommerce.Persistence.Interceptors;
 
 namespace ecommerce.Persistence.Context
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        private readonly PublishDomainEventsInterceptor _publishDomainEventsInterceptor;
+
+        public AppDbContext(DbContextOptions<AppDbContext> options, 
+            PublishDomainEventsInterceptor publishDomainEventsInterceptor) : base(options)
+        {
+            _publishDomainEventsInterceptor = publishDomainEventsInterceptor;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +29,13 @@ namespace ecommerce.Persistence.Context
             modelBuilder.ApplyConfiguration(new OrderEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new OrderItemEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new TicketMessageEntityTypeConfiguration());
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            optionsBuilder.AddInterceptors(_publishDomainEventsInterceptor);
         }
 
         public DbSet<User> Users { get; set; } = null!;
