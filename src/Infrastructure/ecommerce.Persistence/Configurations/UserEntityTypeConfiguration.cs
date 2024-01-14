@@ -72,6 +72,15 @@ namespace ecommerce.Persistence.Configurations
                         .HasMaxLength(Address.CountryMaxLength);
                 });
             });
+
+            builder.OwnsOne(u => u.RefreshToken, token =>
+            {
+                token.Property(t => t.Value)
+                    .IsRequired();
+
+                token.Property(t => t.ExpiresAt)
+                    .IsRequired();
+            });
         }
     }
 }
