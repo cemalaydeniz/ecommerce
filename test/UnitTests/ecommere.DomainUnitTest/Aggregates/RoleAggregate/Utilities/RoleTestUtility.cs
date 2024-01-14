@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.Aggregates.RoleAggregate;
 using ecommerce.TestUtility;
 
-namespace ecommere.DomainUnitTest.Aggregates.RoleAggregate.Utilities
+namespace ecommerce.DomainUnitTest.Aggregates.RoleAggregate.Utilities
 {
     public static class RoleTestUtility
     {

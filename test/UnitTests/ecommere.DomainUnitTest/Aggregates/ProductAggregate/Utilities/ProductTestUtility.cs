@@ -1,9 +1,9 @@
 ﻿using ecommerce.Domain.Aggregates.ProductAggregate;
 using ecommerce.Domain.Common.ValueObjects;
 using ecommerce.TestUtility;
-using ecommere.DomainUnitTest.Common.Utilities;
+using ecommerce.DomainUnitTest.Common.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.ProductAggregate.Utilities
+namespace ecommerce.DomainUnitTest.Aggregates.ProductAggregate.Utilities
 {
     public static class ProductTestUtility
     {

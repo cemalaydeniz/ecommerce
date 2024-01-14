@@ -1,10 +1,10 @@
 ﻿using ecommerce.Domain.Aggregates.RoleAggregate;
 using ecommerce.Domain.Aggregates.RoleAggregate.Events;
 using ecommerce.Domain.Aggregates.UserAggregate;
-using ecommere.DomainUnitTest.Aggregates.RoleAggregate.Utilities;
-using ecommere.DomainUnitTest.Aggregates.UserAggregate.Utilities;
+using ecommerce.DomainUnitTest.Aggregates.RoleAggregate.Utilities;
+using ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.RoleAggregate
+namespace ecommerce.DomainUnitTest.Aggregates.RoleAggregate
 {
     public partial class RoleTest
     {

@@ -1,4 +1,4 @@
-﻿namespace ecommere.DomainUnitTest.Aggregates.UserAggregate.Utilities
+﻿namespace ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities
 {
     public static class TokenTestUtility
     {

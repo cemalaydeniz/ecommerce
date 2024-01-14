@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.Aggregates.OrderRepository.Entities;
 using ecommerce.TestUtility;
 
-namespace ecommere.DomainUnitTest.Aggregates.OrderAggregate.Utilities
+namespace ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities
 {
     public static class TicketMessageTestUtility
     {

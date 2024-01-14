@@ -2,9 +2,9 @@
 using ecommerce.Domain.Aggregates.OrderRepository.Events;
 using ecommerce.Domain.Aggregates.OrderRepository;
 using ecommerce.Domain.Common.ValueObjects;
-using ecommere.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
+using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.OrderAggregate
+namespace ecommerce.DomainUnitTest.Aggregates.OrderAggregate
 {
     public partial class OrderTest
     {

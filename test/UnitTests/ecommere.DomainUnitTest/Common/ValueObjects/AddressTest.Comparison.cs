@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.Common.ValueObjects;
-using ecommere.DomainUnitTest.Common.Utilities;
+using ecommerce.DomainUnitTest.Common.Utilities;
 
-namespace ecommere.DomainUnitTest.Common.ValueObjects
+namespace ecommerce.DomainUnitTest.Common.ValueObjects
 {
     public partial class AddressTest
     {

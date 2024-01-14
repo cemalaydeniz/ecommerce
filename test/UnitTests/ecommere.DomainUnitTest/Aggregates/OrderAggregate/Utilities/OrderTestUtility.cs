@@ -2,9 +2,9 @@
 using ecommerce.Domain.Aggregates.OrderRepository;
 using ecommerce.Domain.Aggregates.UserAggregate;
 using ecommerce.TestUtility;
-using ecommere.DomainUnitTest.Common.Utilities;
+using ecommerce.DomainUnitTest.Common.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.OrderAggregate.Utilities
+namespace ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities
 {
     public static class OrderTestUtility
     {

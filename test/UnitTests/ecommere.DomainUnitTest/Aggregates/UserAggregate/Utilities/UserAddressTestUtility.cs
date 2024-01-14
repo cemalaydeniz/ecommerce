@@ -1,8 +1,8 @@
 ﻿using ecommerce.Domain.Aggregates.UserAggregate.ValueObjects;
 using ecommerce.TestUtility;
-using ecommere.DomainUnitTest.Common.Utilities;
+using ecommerce.DomainUnitTest.Common.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.UserAggregate.Utilities
+namespace ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities
 {
     public static class UserAddressTestUtility
     {

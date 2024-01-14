@@ -1,9 +1,9 @@
 ﻿using ecommerce.Domain.Aggregates.UserAggregate.Events;
 using ecommerce.Domain.Aggregates.UserAggregate.ValueObjects;
 using ecommerce.Domain.Aggregates.UserAggregate;
-using ecommere.DomainUnitTest.Aggregates.UserAggregate.Utilities;
+using ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.UserAggregate
+namespace ecommerce.DomainUnitTest.Aggregates.UserAggregate
 {
     public partial class UserTest
     {

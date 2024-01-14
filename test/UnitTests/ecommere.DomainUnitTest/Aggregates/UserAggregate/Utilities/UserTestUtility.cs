@@ -1,7 +1,7 @@
 ﻿using ecommerce.Domain.Aggregates.UserAggregate;
 using ecommerce.TestUtility;
 
-namespace ecommere.DomainUnitTest.Aggregates.UserAggregate.Utilities
+namespace ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities
 {
     public static class UserTestUtility
     {

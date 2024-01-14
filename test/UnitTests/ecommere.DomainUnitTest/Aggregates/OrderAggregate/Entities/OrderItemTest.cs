@@ -1,8 +1,8 @@
 ﻿using ecommerce.Domain.Aggregates.OrderRepository.Entities;
 using ecommerce.Domain.Common.ValueObjects;
-using ecommere.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
+using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 
-namespace ecommere.DomainUnitTest.Aggregates.OrderAggregate.Entities
+namespace ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Entities
 {
     public class OrderItemTest
     {
