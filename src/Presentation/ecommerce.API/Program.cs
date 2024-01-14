@@ -1,5 +1,6 @@
 using ecommerce.Application;
 using ecommerce.Persistence;
+using ecommerce.Persistence.Seeding;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,5 +26,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//~ Begin - Seed data
+await Seeding.SeedInitialRoles(app.Services);
+//~ End
 
 app.Run();
