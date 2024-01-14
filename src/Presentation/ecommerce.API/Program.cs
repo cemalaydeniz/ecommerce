@@ -1,3 +1,4 @@
+using ecommerce.API.Events.Jwt;
 using ecommerce.API.Filters;
 using ecommerce.API.Middlewares;
 using ecommerce.Application;
@@ -36,6 +37,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidAudience = audience,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecretKey!)),
         ClockSkew = TimeSpan.Zero
+    };
+    _.Events = new JwtBearerEvents
+    {
+        OnChallenge = ReformatUnauthorized.Handle,
+        OnForbidden = ReformatForbidden.Handle
     };
 });
 //~ End
