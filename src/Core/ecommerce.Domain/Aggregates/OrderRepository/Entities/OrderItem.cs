@@ -1,4 +1,6 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository.Exceptions;
+﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
+using ecommerce.Domain.Aggregates.OrderRepository.Exceptions;
 using ecommerce.Domain.Aggregates.ProductAggregate;
 using ecommerce.Domain.Common.Exceptions;
 using ecommerce.Domain.Common.ValueObjects;
@@ -15,6 +17,36 @@ namespace ecommerce.Domain.Aggregates.OrderRepository.Entities
 
         // Navigations
         public Guid ProductId { get; private set; }
+        #endregion
+
+        #region Behaviors
+        private OrderItem() { }
+
+        /// <summary>
+        /// Creates an item for an order locally
+        /// </summary>
+        /// <param name="productId">The Id of the product that this item is related to</param>
+        /// <param name="productName">The name of the item</param>
+        /// <param name="unitPrice">The unit price of the item</param>
+        /// <param name="quantity">The quantity of the item</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="CharLengthOutofRangeException"></exception>
+        /// <exception cref="NegativeOrZeroQuantityException"></exception>
+        public OrderItem(Guid productId,
+            string productName,
+            Money unitPrice,
+            int quantity)
+        {
+            ValidateProductName(productName);
+            ValidateQuantity(quantity);
+
+            Id = Guid.NewGuid();
+            ProductName = productName;
+            UnitPrice = unitPrice;
+            Quantity = quantity;
+
+            ProductId = productId;
+        }
         #endregion
 
         #region Validations
