@@ -20,6 +20,7 @@ namespace ecommerce.Domain.Aggregates.UserAggregate
         public List<UserAddress> Addresses { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public bool IsDeleted { get; private set; }
+        public Token? RefreshToken { get; private set; }
 
         // Navigations
         public List<Role> _roles = new List<Role>();
@@ -242,6 +243,26 @@ namespace ecommerce.Domain.Aggregates.UserAggregate
 
             base.AddDomainEvents(new UserSoftDeleted(Id));
             return true;
+        }
+
+        /// <summary>
+        /// Renews the refresh token of the user
+        /// </summary>
+        /// <param name="newTokenValue">The new value of the token to be set</param>
+        /// <param name="expirationDate">The expiration date of the token</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="TokenExpiresInPastException"></exception>
+        public void UpdateRefreshToken(string newTokenValue, DateTime expirationDate)
+        {
+            RefreshToken = new Token(newTokenValue, expirationDate);
+        }
+
+        /// <summary>
+        /// Clears the refresh token from the user
+        /// </summary>
+        public void ClearRefreshToken()
+        {
+            RefreshToken = null;
         }
         #endregion
 
