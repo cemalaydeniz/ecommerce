@@ -17,8 +17,15 @@ namespace ecommerce.Domain.Aggregates.OrderRepository
         public TicketStatus TicketStatus { get; private set; }
 
         // Navigations
+        private List<OrderItem> _orderItems = new List<OrderItem>();
+        public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
+
+        private List<TicketMessage> _ticketMessages = new List<TicketMessage>();
+        public IReadOnlyCollection<TicketMessage> TicketMessages => _ticketMessages.AsReadOnly();
+
         public Guid UserId { get; private set; }
         #endregion
+
 
         #region Validations
         private void ValidateUserName(string userName)
