@@ -7,6 +7,7 @@ using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.SignIn;
 using ecommerce.Application.Features.Commands.SignOut;
 using ecommerce.Application.Features.Commands.SignUp;
+using ecommerce.Application.Features.Commands.UpdateProfile;
 using ecommerce.Application.Features.Queries.GetUserProfile;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -88,6 +89,23 @@ namespace ecommerce.API.Controller
                 }
 
                 return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+            }
+
+            return Unauthorized(JsonUtility.Fail(ConstantsUtility.UserController.NotSignedIn, StatusCodes.Status401Unauthorized));
+        }
+
+        [Authorize]
+        [HttpPut("profile/update-profile")]
+        public async Task<IActionResult> UpdateProfile([FromBody]UpdateProfileModel model)
+        {
+            if (Guid.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out Guid userId))
+            {
+                var request = _mapper.Map<UpdateProfileCommandRequest>(model);
+                request.UserId = userId;
+                var result = await _mediator.Send(request);
+                return result.IsSuccess ?
+                    Ok(JsonUtility.Success(ConstantsUtility.UserController.ProfileUpdated, StatusCodes.Status200OK)) :
+                    BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
             }
 
             return Unauthorized(JsonUtility.Fail(ConstantsUtility.UserController.NotSignedIn, StatusCodes.Status401Unauthorized));
