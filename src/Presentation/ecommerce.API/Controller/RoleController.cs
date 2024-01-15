@@ -12,6 +12,7 @@ using ecommerce.Application.Features.Commands.UpdateRole;
 using ecommerce.Application.Features.Commands.AssignRoleToUser;
 using ecommerce.Application.Features.Commands.RemoveRoleFromUser;
 using ecommerce.Application.Features.Commands.RemoveRoleFromAllUsers;
+using ecommerce.Application.Features.Commands.DeleteRole;
 
 namespace ecommerce.API.Controller
 {
@@ -94,6 +95,14 @@ namespace ecommerce.API.Controller
             return result.IsSuccess ?
                 Ok(JsonUtility.Success(ConstantsUtility.RoleController.RoleRemovedFromAll, StatusCodes.Status200OK)) :
                 BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpDelete("delete/{roleId}")]
+        public async Task<IActionResult> DeleteRole(Guid roleId)
+        {
+            var request = new DeleteRoleCommandRequest() { RoleId = roleId };
+            await _mediator.Send(request);
+            return Ok(JsonUtility.Success(ConstantsUtility.RoleController.RoleDeleted, StatusCodes.Status200OK));
         }
     }
 }
