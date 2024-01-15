@@ -11,6 +11,7 @@ namespace ecommerce.TestUtility.Fixtures
             MapperConfiguration config = new MapperConfiguration(_ =>
             {
                 _.AddMaps(typeof(Application.ServiceRegistration).GetTypeInfo().Assembly);
+                _.AddMaps(typeof(API.Mappings.UserController.SignUpMapping).GetTypeInfo().Assembly);
             });
 
             Mapper = config.CreateMapper();

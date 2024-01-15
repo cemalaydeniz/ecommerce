@@ -8,6 +8,7 @@ using ecommerce.Persistence.Seeding;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +53,8 @@ builder.Services.AddSwaggerGen(_ =>
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
+
+builder.Services.AddAutoMapper(typeof(Program).GetTypeInfo().Assembly);
 
 var issuer = builder.Configuration[JwtConstants.Issuer_ConfigKey];
 var audience = builder.Configuration[JwtConstants.Audience_ConfigKey];
