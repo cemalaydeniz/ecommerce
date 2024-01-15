@@ -2,6 +2,7 @@ using ecommerce.API.Events.Jwt;
 using ecommerce.API.Filters;
 using ecommerce.API.Middlewares;
 using ecommerce.Application;
+using ecommerce.Infrastructure;
 using ecommerce.Persistence;
 using ecommerce.Persistence.Authentication;
 using ecommerce.Persistence.Seeding;
@@ -53,6 +54,7 @@ builder.Services.AddSwaggerGen(_ =>
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddAutoMapper(typeof(Program).GetTypeInfo().Assembly);
 
