@@ -5,6 +5,7 @@ using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.CreateProduct;
 using ecommerce.Application.Features.Commands.MakeProductFree;
+using ecommerce.Application.Features.Commands.SoftDeleteProduct;
 using ecommerce.Application.Features.Commands.UpdateProduct;
 using ecommerce.Application.Features.Queries.GetProduct;
 using ecommerce.Application.Features.Queries.SearchProducts;
@@ -82,6 +83,17 @@ namespace ecommerce.API.Controller
             var result = await _mediator.Send(request);
             return result.IsSuccess ?
                 Ok(JsonUtility.Success(ConstantsUtility.ProductController.ProductMadeFree, StatusCodes.Status200OK)) :
+                BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [Authorize(Roles = Application.Utilities.Constants.ConstantsUtility.Role.Admin)]
+        [HttpPut("soft-delete/{productId}")]
+        public async Task<IActionResult> SoftDeleteProduct(Guid productId)
+        {
+            var request = new SoftDeleteProductCommandRequest() { ProductId = productId };
+            var result = await _mediator.Send(request);
+            return result.IsSuccess ?
+                Ok(JsonUtility.Success(ConstantsUtility.ProductController.ProductSoftDeleted, StatusCodes.Status200OK)) :
                 BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
