@@ -9,6 +9,7 @@ using ecommerce.Application.Features.Commands.CreateRole;
 using ecommerce.Application.Features.Queries.GetRole;
 using ecommerce.API.Dtos.RoleController;
 using ecommerce.Application.Features.Commands.UpdateRole;
+using ecommerce.Application.Features.Commands.AssignRoleToUser;
 
 namespace ecommerce.API.Controller
 {
@@ -58,6 +59,17 @@ namespace ecommerce.API.Controller
             var result = await _mediator.Send(request);
             return result.IsSuccess ?
                 Ok(JsonUtility.Success(ConstantsUtility.RoleController.RoleUpdated, StatusCodes.Status200OK)) :
+                BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpPost("assign-to-user/{roleId}")]
+        public async Task<IActionResult> AssignToUser([FromBody]AssignRoleToUserModel model, Guid roleId)
+        {
+            var request = _mapper.Map<AssignRoleToUserCommandRequest>(model);
+            request.RoleId = roleId;
+            var result = await _mediator.Send(request);
+            return result.IsSuccess ?
+                Ok(JsonUtility.Success(ConstantsUtility.RoleController.RoleAssignedToUser, StatusCodes.Status200OK)) :
                 BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
