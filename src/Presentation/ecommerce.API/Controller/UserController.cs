@@ -7,6 +7,7 @@ using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.SignIn;
 using ecommerce.Application.Features.Commands.SignOut;
 using ecommerce.Application.Features.Commands.SignUp;
+using ecommerce.Application.Features.Commands.UpdateCredentials;
 using ecommerce.Application.Features.Commands.UpdateProfile;
 using ecommerce.Application.Features.Queries.GetUserProfile;
 using MediatR;
@@ -105,6 +106,23 @@ namespace ecommerce.API.Controller
                 var result = await _mediator.Send(request);
                 return result.IsSuccess ?
                     Ok(JsonUtility.Success(ConstantsUtility.UserController.ProfileUpdated, StatusCodes.Status200OK)) :
+                    BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+            }
+
+            return Unauthorized(JsonUtility.Fail(ConstantsUtility.UserController.NotSignedIn, StatusCodes.Status401Unauthorized));
+        }
+
+        [Authorize]
+        [HttpPut("profile/update-credentials")]
+        public async Task<IActionResult> UpdateCredentials([FromBody]UpdateCredentialsModel model)
+        {
+            if (Guid.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out Guid userId))
+            {
+                var request = _mapper.Map<UpdateCredentialsCommandRequest>(model);
+                request.UserId = userId;
+                var result = await _mediator.Send(request);
+                return result.IsSuccess ?
+                    Ok(JsonUtility.Success(ConstantsUtility.UserController.CredentialsUpdated, StatusCodes.Status200OK)) :
                     BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
             }
 
