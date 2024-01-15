@@ -5,6 +5,7 @@
         public static class ProductController
         {
             public const string ProductCreated = "The product has been created";
+            public const string ProductUpdated = "The product has been updated";
         }
     }
 }

@@ -4,6 +4,7 @@ using ecommerce.API.Models.ProductController;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.CreateProduct;
+using ecommerce.Application.Features.Commands.UpdateProduct;
 using ecommerce.Application.Features.Queries.GetProduct;
 using ecommerce.Application.Features.Queries.SearchProducts;
 using MediatR;
@@ -58,6 +59,18 @@ namespace ecommerce.API.Controller
             var dto = _mapper.Map<SearchProductDto>(result);
             return Ok(JsonUtility.Payload(dto, null,
                 dto.Result.Count == 0 ? StatusCodes.Status204NoContent : StatusCodes.Status200OK));
+        }
+
+        [Authorize(Roles = Application.Utilities.Constants.ConstantsUtility.Role.Admin)]
+        [HttpPut("update/{productId}")]
+        public async Task<IActionResult> UpdateProduct([FromBody]UpdateProductModel model, Guid productId)
+        {
+            var request = _mapper.Map<UpdateProductCommandRequest>(model);
+            request.ProductId = productId;
+            var result = await _mediator.Send(request);
+            return result.IsSuccess ?
+                Ok(JsonUtility.Success(ConstantsUtility.ProductController.ProductUpdated, StatusCodes.Status201Created)) :
+                BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
 }
