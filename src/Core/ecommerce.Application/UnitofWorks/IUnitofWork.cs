@@ -9,7 +9,7 @@ namespace ecommerce.Application.UnitofWorks
     /// <summary>
     /// Manages every db contexts and their repositories
     /// </summary>
-    public interface IUnitofWork
+    public interface IUnitofWork : IDisposable
     {
         Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
         Task<bool> CommitAsync(CancellationToken cancellationToken = default);
