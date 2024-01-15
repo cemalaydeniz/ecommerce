@@ -8,6 +8,7 @@ using ecommerce.API.Models.RoleController;
 using ecommerce.Application.Features.Commands.CreateRole;
 using ecommerce.Application.Features.Queries.GetRole;
 using ecommerce.API.Dtos.RoleController;
+using ecommerce.Application.Features.Commands.UpdateRole;
 
 namespace ecommerce.API.Controller
 {
@@ -47,6 +48,17 @@ namespace ecommerce.API.Controller
             }
 
             return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpPut("update/{roleId}")]
+        public async Task<IActionResult> UpdateRole([FromBody]UpdateRoleModel model, Guid roleId)
+        {
+            var request = _mapper.Map<UpdateRoleCommandRequest>(model);
+            request.RoleId = roleId;
+            var result = await _mediator.Send(request);
+            return result.IsSuccess ?
+                Ok(JsonUtility.Success(ConstantsUtility.RoleController.RoleUpdated, StatusCodes.Status200OK)) :
+                BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
 }
