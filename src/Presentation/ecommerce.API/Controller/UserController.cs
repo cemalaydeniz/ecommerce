@@ -5,9 +5,11 @@ using ecommerce.API.Utilities;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.SignIn;
+using ecommerce.Application.Features.Commands.SignOut;
 using ecommerce.Application.Features.Commands.SignUp;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ecommerce.API.Controller
 {
@@ -52,6 +54,21 @@ namespace ecommerce.API.Controller
             }
 
             return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpPut("sign-out")]
+        public async Task<IActionResult> SignOut([FromQuery]bool signOutAllDevices)
+        {
+            if (Guid.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out Guid userId))
+            {
+                await _mediator.Send(new SignOutCommandRequest()
+                {
+                    UserId = userId,
+                    SignOutAllDevices = signOutAllDevices
+                });
+            }
+
+            return Ok(JsonUtility.Success(ConstantsUtility.UserController.SignedOut, StatusCodes.Status200OK));
         }
     }
 }
