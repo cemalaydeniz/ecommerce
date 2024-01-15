@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using ecommerce.API.Dtos.UserController;
 using ecommerce.API.Models.UserController;
+using ecommerce.API.Utilities;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
+using ecommerce.Application.Features.Commands.SignIn;
 using ecommerce.Application.Features.Commands.SignUp;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +32,26 @@ namespace ecommerce.API.Controller
             return result.IsSuccess ?
                 Ok(JsonUtility.Success(ConstantsUtility.UserController.SignedUp, StatusCodes.Status201Created)) :
                 BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpPut("sign-in")]
+        public async Task<IActionResult> SignIn([FromBody]SignInModel model, CancellationToken cancellationToken)
+        {
+            var request = _mapper.Map<SignInCommandRequest>(model);
+            var result = await _mediator.Send(request, cancellationToken);
+            if (result.IsSuccess)
+            {
+                CookieUtility.AddToCookie(Response,
+                        ConstantsUtility.Cookies.RefreshTokenKey,
+                        result.Response!.Token.RefreshToken,
+                        result.Response.Token.RefreshTokenExpirationDate,
+                        true);
+
+                var dto = _mapper.Map<SignInDto>(result.Response);
+                return Ok(JsonUtility.Payload(dto, ConstantsUtility.UserController.SignedIn, StatusCodes.Status200OK));
+            }
+
+            return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
 }

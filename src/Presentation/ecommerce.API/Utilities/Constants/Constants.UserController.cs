@@ -5,6 +5,7 @@
         public static class UserController
         {
             public const string SignedUp = "You have signed up successfully";
+            public const string SignedIn = "You have signed in successfully";
         }
     }
 }
