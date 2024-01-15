@@ -7,6 +7,7 @@
             public const string SignedUp = "You have signed up successfully";
             public const string SignedIn = "You have signed in successfully";
             public const string SignedOut = "You have signed out successfully";
+            public const string NotSignedIn = "You have not signed in";
         }
     }
 }

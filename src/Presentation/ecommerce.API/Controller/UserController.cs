@@ -7,7 +7,9 @@ using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.SignIn;
 using ecommerce.Application.Features.Commands.SignOut;
 using ecommerce.Application.Features.Commands.SignUp;
+using ecommerce.Application.Features.Queries.GetUserProfile;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -69,6 +71,26 @@ namespace ecommerce.API.Controller
             }
 
             return Ok(JsonUtility.Success(ConstantsUtility.UserController.SignedOut, StatusCodes.Status200OK));
+        }
+
+        [Authorize]
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetProfile(CancellationToken cancellationToken)
+        {
+            if (Guid.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out Guid userId))
+            {
+                var request = new GetUserProfileQueryRequest() { UserId = userId };
+                var result = await _mediator.Send(request, cancellationToken);
+                if (result.IsSuccess)
+                {
+                    var dto = _mapper.Map<GetUserProfileDto>(result.Response);
+                    return Ok(JsonUtility.Payload(dto, null, StatusCodes.Status200OK));
+                }
+
+                return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+            }
+
+            return Unauthorized(JsonUtility.Fail(ConstantsUtility.UserController.NotSignedIn, StatusCodes.Status401Unauthorized));
         }
     }
 }
