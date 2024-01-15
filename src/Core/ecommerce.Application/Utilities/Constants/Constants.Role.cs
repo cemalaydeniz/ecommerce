@@ -10,6 +10,7 @@
             public const string Admin = "Admin";
 
             public const string RoleExists = "The role already exists";
+            public const string RoleNotFound = "The role was not found";
         }
     }
 }
