@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ecommerce.ApplicationUnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.API.UnitTest", "test\UnitTests\ecommerce.API.UnitTest\ecommerce.API.UnitTest.csproj", "{D8B8CA3A-30A6-48DD-83BF-78F82416BE8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce.Persistence.UnitTest", "test\UnitTests\ecommerce.Persistence.UnitTest\ecommerce.Persistence.UnitTest.csproj", "{9DDEE950-60F3-4055-AE58-4A39AE8CEAA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{D8B8CA3A-30A6-48DD-83BF-78F82416BE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8B8CA3A-30A6-48DD-83BF-78F82416BE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8B8CA3A-30A6-48DD-83BF-78F82416BE8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DDEE950-60F3-4055-AE58-4A39AE8CEAA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DDEE950-60F3-4055-AE58-4A39AE8CEAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DDEE950-60F3-4055-AE58-4A39AE8CEAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DDEE950-60F3-4055-AE58-4A39AE8CEAA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +105,7 @@ Global
 		{FDAA0759-0BF8-4C3D-81C2-9DA6FFC3CFB6} = {97E56551-8CBD-456C-A3A4-8275B984981D}
 		{44BE0E3E-5329-4FFB-9895-4EA848B45892} = {97E56551-8CBD-456C-A3A4-8275B984981D}
 		{D8B8CA3A-30A6-48DD-83BF-78F82416BE8C} = {97E56551-8CBD-456C-A3A4-8275B984981D}
+		{9DDEE950-60F3-4055-AE58-4A39AE8CEAA8} = {97E56551-8CBD-456C-A3A4-8275B984981D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E822E876-89F1-4DF6-94FE-F365EF725D4F}
