@@ -3,6 +3,7 @@ using ecommerce.API.Dtos.PaymentController;
 using ecommerce.API.Models.PaymentController;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
+using ecommerce.Application.Features.Commands.PaymentCheck;
 using ecommerce.Application.Features.Queries.InitiatePayment;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -43,6 +44,18 @@ namespace ecommerce.API.Controller
             }
 
             return Unauthorized(JsonUtility.Fail(ConstantsUtility.PaymentController.NotSignedIn, StatusCodes.Status401Unauthorized));
+        }
+
+        [HttpPost("webhook")]
+        public async Task<IActionResult> PaymentCheck()
+        {
+            var request = new PaymentCheckCommandRequest()
+            {
+                Header = Request.Headers["Stripe-Signature"]!,
+                Body = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync()
+            };
+            await _mediator.Send(request);
+            return Ok();
         }
     }
 }
