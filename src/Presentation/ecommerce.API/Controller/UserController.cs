@@ -7,6 +7,7 @@ using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.SignIn;
 using ecommerce.Application.Features.Commands.SignOut;
 using ecommerce.Application.Features.Commands.SignUp;
+using ecommerce.Application.Features.Commands.SoftDeleteUser;
 using ecommerce.Application.Features.Commands.UpdateCredentials;
 using ecommerce.Application.Features.Commands.UpdateProfile;
 using ecommerce.Application.Features.Queries.GetUserProfile;
@@ -127,6 +128,17 @@ namespace ecommerce.API.Controller
             }
 
             return Unauthorized(JsonUtility.Fail(ConstantsUtility.UserController.NotSignedIn, StatusCodes.Status401Unauthorized));
+        }
+
+        [Authorize(Roles = Application.Utilities.Constants.ConstantsUtility.Role.Admin)]
+        [HttpPut("soft-delete/{userId}")]
+        public async Task<IActionResult> SoftDeleteUser(Guid userId)
+        {
+            var request = new SoftDeleteUserCommandRequest() { UserId = userId };
+            var result = await _mediator.Send(request);
+            return result.IsSuccess ?
+                Ok(JsonUtility.Success(ConstantsUtility.UserController.UserSoftDeleted, StatusCodes.Status200OK)) :
+                BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
 }

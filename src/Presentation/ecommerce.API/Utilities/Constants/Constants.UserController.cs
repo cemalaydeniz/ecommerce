@@ -11,6 +11,8 @@
 
             public const string ProfileUpdated = "The profile has been updated";
             public const string CredentialsUpdated = "The credentials has been updated";
+
+            public const string UserSoftDeleted = "The user has been soft deleted";
         }
     }
 }
