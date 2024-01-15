@@ -5,6 +5,7 @@ using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.CreateProduct;
 using ecommerce.Application.Features.Queries.GetProduct;
+using ecommerce.Application.Features.Queries.SearchProducts;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,16 @@ namespace ecommerce.API.Controller
             }
 
             return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchProducts([FromQuery]string name, [FromQuery]int page, CancellationToken cancellationToken)
+        {
+            var request = new SearchProductsQueryRequest() { Name = name, Page = page };
+            var result = await _mediator.Send(request, cancellationToken);
+            var dto = _mapper.Map<SearchProductDto>(result);
+            return Ok(JsonUtility.Payload(dto, null,
+                dto.Result.Count == 0 ? StatusCodes.Status204NoContent : StatusCodes.Status200OK));
         }
     }
 }
