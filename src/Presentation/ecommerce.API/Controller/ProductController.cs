@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ecommerce.API.Dtos.ProductController;
 using ecommerce.API.Models.ProductController;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.CreateProduct;
+using ecommerce.Application.Features.Queries.GetProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +33,20 @@ namespace ecommerce.API.Controller
             return result.IsSuccess ?
                 Ok(JsonUtility.Success(ConstantsUtility.ProductController.ProductCreated, StatusCodes.Status201Created)) :
                 BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
+        }
+
+        [HttpGet("get/{productId}")]
+        public async Task<IActionResult> GetProduct(Guid productId, CancellationToken cancellationToken)
+        {
+            var request = new GetProductQueryRequest() { ProductId = productId };
+            var result = await _mediator.Send(request);
+            if (result.IsSuccess)
+            {
+                var dto = _mapper.Map<GetProductDto>(result.Response);
+                return Ok(JsonUtility.Payload(dto, null, StatusCodes.Status200OK));
+            }
+
+            return BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
 }
