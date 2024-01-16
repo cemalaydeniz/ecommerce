@@ -3,7 +3,7 @@
 using ecommerce.Domain.Common.Exceptions;
 using ecommerce.Domain.SeedWork;
 
-namespace ecommerce.Domain.Aggregates.OrderRepository.Entities
+namespace ecommerce.Domain.Aggregates.OrderAggregate.Entities
 {
     public class TicketMessage : BaseEntity<Guid>
     {

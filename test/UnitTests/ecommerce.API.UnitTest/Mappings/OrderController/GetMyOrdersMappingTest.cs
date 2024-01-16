@@ -1,7 +1,7 @@
 ﻿using ecommerce.API.Dtos.OrderController;
 using ecommerce.Application.Features.Queries.GetMyOrders;
-using ecommerce.Domain.Aggregates.OrderRepository;
-using ecommerce.Domain.Aggregates.OrderRepository.Entities;
+using ecommerce.Domain.Aggregates.OrderAggregate;
+using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
 using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 using ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities;
 using ecommerce.DomainUnitTest.Common.Utilities;

@@ -1,5 +1,5 @@
 ﻿using ecommerce.Application.Features.Queries.GetMyOrders;
-using ecommerce.Domain.Aggregates.OrderRepository;
+using ecommerce.Domain.Aggregates.OrderAggregate;
 using ecommerce.Domain.Aggregates.UserAggregate;
 using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 using ecommerce.DomainUnitTest.Aggregates.UserAggregate.Utilities;

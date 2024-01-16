@@ -1,5 +1,5 @@
 ﻿using ecommerce.Application.Features.Queries.GetOrders;
-using ecommerce.Domain.Aggregates.OrderRepository;
+using ecommerce.Domain.Aggregates.OrderAggregate;
 using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 using ecommerce.TestUtility.Fixtures;
 

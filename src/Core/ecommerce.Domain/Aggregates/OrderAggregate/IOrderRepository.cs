@@ -1,6 +1,6 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository.Entities;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
 
-namespace ecommerce.Domain.Aggregates.OrderRepository
+namespace ecommerce.Domain.Aggregates.OrderAggregate
 {
     /// <summary>
     /// Available CRUD operations for the aggregate root: <see cref="Order"/>

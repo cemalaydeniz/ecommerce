@@ -1,6 +1,6 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository.Enums;
-using ecommerce.Domain.Aggregates.OrderRepository.Events;
-using ecommerce.Domain.Aggregates.OrderRepository;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate.Enums;
+using ecommerce.Domain.Aggregates.OrderAggregate.Events;
+using ecommerce.Domain.Aggregates.OrderAggregate;
 using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 
 namespace ecommerce.DomainUnitTest.Aggregates.OrderAggregate

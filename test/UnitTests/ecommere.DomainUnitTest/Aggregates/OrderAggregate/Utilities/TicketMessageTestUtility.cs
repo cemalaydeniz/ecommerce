@@ -1,4 +1,4 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository.Entities;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
 using ecommerce.TestUtility;
 
 namespace ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities

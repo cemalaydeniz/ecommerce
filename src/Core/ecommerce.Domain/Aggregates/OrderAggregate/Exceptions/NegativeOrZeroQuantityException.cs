@@ -1,4 +1,4 @@
-﻿namespace ecommerce.Domain.Aggregates.OrderRepository.Exceptions
+﻿namespace ecommerce.Domain.Aggregates.OrderAggregate.Exceptions
 {
     public class NegativeOrZeroQuantityException : Exception
     {

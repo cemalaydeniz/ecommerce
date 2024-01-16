@@ -1,4 +1,4 @@
-﻿namespace ecommerce.Domain.Aggregates.OrderRepository.Enums
+﻿namespace ecommerce.Domain.Aggregates.OrderAggregate.Enums
 {
     public enum TicketStatus : byte
     {

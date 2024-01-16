@@ -1,15 +1,15 @@
 ﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
 
-using ecommerce.Domain.Aggregates.OrderRepository.Entities;
-using ecommerce.Domain.Aggregates.OrderRepository.Enums;
-using ecommerce.Domain.Aggregates.OrderRepository.Events;
-using ecommerce.Domain.Aggregates.OrderRepository.Exceptions;
+using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
+using ecommerce.Domain.Aggregates.OrderAggregate.Enums;
+using ecommerce.Domain.Aggregates.OrderAggregate.Events;
+using ecommerce.Domain.Aggregates.OrderAggregate.Exceptions;
 using ecommerce.Domain.Aggregates.UserAggregate;
 using ecommerce.Domain.Common.Exceptions;
 using ecommerce.Domain.Common.ValueObjects;
 using ecommerce.Domain.SeedWork;
 
-namespace ecommerce.Domain.Aggregates.OrderRepository
+namespace ecommerce.Domain.Aggregates.OrderAggregate
 {
     public class Order : BaseEntity<Guid>, IAggregateRoot
     {

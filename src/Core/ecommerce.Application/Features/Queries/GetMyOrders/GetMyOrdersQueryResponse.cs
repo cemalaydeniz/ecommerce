@@ -1,4 +1,4 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate;
 
 namespace ecommerce.Application.Features.Queries.GetMyOrders
 {

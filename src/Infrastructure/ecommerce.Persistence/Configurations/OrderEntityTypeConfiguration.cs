@@ -1,6 +1,6 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate;
 using ecommerce.Domain.Aggregates.UserAggregate;
-using ecommerce.Domain.Aggregates.OrderRepository.Enums;
+using ecommerce.Domain.Aggregates.OrderAggregate.Enums;
 using ecommerce.Domain.Common.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

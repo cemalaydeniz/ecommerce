@@ -1,5 +1,5 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository.Entities;
-using ecommerce.Domain.Aggregates.OrderRepository;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
+using ecommerce.Domain.Aggregates.OrderAggregate;
 using ecommerce.Domain.Aggregates.UserAggregate;
 using ecommerce.TestUtility;
 using ecommerce.DomainUnitTest.Common.Utilities;

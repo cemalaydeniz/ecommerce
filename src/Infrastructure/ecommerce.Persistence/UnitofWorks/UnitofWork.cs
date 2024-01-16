@@ -1,5 +1,5 @@
 ﻿using ecommerce.Application.UnitofWorks;
-using ecommerce.Domain.Aggregates.OrderRepository;
+using ecommerce.Domain.Aggregates.OrderAggregate;
 using ecommerce.Domain.Aggregates.ProductAggregate;
 using ecommerce.Domain.Aggregates.RoleAggregate;
 using ecommerce.Domain.Aggregates.UserAggregate;

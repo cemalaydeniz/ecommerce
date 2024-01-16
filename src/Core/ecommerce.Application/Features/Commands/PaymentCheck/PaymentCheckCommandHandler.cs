@@ -2,8 +2,8 @@
 using ecommerce.Application.UnitofWorks;
 using ecommerce.Application.Utilities.Constants;
 using ecommerce.Application.Validations.Behaviors;
-using ecommerce.Domain.Aggregates.OrderRepository;
-using ecommerce.Domain.Aggregates.OrderRepository.Entities;
+using ecommerce.Domain.Aggregates.OrderAggregate;
+using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
 using ecommerce.Domain.Aggregates.UserAggregate;
 using ecommerce.Domain.Common.ValueObjects;
 using MediatR;

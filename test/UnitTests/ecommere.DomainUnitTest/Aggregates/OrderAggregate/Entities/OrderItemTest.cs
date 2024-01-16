@@ -1,4 +1,4 @@
-﻿using ecommerce.Domain.Aggregates.OrderRepository.Entities;
+﻿using ecommerce.Domain.Aggregates.OrderAggregate.Entities;
 using ecommerce.Domain.Common.ValueObjects;
 using ecommerce.DomainUnitTest.Aggregates.OrderAggregate.Utilities;
 
