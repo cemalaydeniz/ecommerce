@@ -5,6 +5,8 @@
         public static class OrderController
         {
             public const string NotSignedIn = "You have not signed in";
+
+            public const string MessageSent = "The message has been sent";
         }
     }
 }

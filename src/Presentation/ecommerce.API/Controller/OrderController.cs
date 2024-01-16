@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using ecommerce.API.Dtos.OrderController;
+using ecommerce.API.Models.OrderController;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
+using ecommerce.Application.Features.Commands.AddTicketMessage;
 using ecommerce.Application.Features.Queries.GetMyOrders;
 using ecommerce.Application.Features.Queries.GetOrders;
 using MediatR;
@@ -46,6 +48,23 @@ namespace ecommerce.API.Controller
                 var dto = _mapper.Map<GetMyOrdersDto>(result);
                 return Ok(JsonUtility.Payload(dto, null,
                     dto.Orders.Count == 0 ? StatusCodes.Status204NoContent : StatusCodes.Status200OK));
+            }
+
+            return Unauthorized(JsonUtility.Fail(ConstantsUtility.OrderController.NotSignedIn, StatusCodes.Status401Unauthorized));
+        }
+
+        [HttpPost("{orderId}/ticket/add")]
+        public async Task<IActionResult> AddTicketMessage([FromBody]AddTicketMessageModel model, Guid orderId)
+        {
+            if (Guid.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out Guid userId))
+            {
+                var request = _mapper.Map<AddTicketMessageCommandRequest>(model);
+                request.UserId = userId;
+                request.OrderId = orderId;
+                var result = await _mediator.Send(request);
+                return result.IsSuccess ?
+                    Ok(JsonUtility.Success(ConstantsUtility.OrderController.MessageSent, StatusCodes.Status200OK)) :
+                    BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
             }
 
             return Unauthorized(JsonUtility.Fail(ConstantsUtility.OrderController.NotSignedIn, StatusCodes.Status401Unauthorized));
