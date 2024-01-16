@@ -4,6 +4,7 @@ using ecommerce.API.Models.OrderController;
 using ecommerce.API.Utilities.Constants;
 using ecommerce.API.Utilities.Json;
 using ecommerce.Application.Features.Commands.AddTicketMessage;
+using ecommerce.Application.Features.Commands.CloseTicket;
 using ecommerce.Application.Features.Queries.GetMyOrders;
 using ecommerce.Application.Features.Queries.GetOrders;
 using MediatR;
@@ -68,6 +69,17 @@ namespace ecommerce.API.Controller
             }
 
             return Unauthorized(JsonUtility.Fail(ConstantsUtility.OrderController.NotSignedIn, StatusCodes.Status401Unauthorized));
+        }
+
+        [Authorize(Roles = Application.Utilities.Constants.ConstantsUtility.Role.Admin)]
+        [HttpPut("{orderId}/ticket/close")]
+        public async Task<IActionResult> CloseTicket(Guid orderId)
+        {
+            var request = new CloseTicketCommandRequest() { OrderId = orderId };
+            var result = await _mediator.Send(request);
+            return result.IsSuccess ?
+                Ok(JsonUtility.Success(ConstantsUtility.OrderController.TicketClosed, StatusCodes.Status200OK)) :
+                BadRequest(JsonUtility.Fail(result.Errors, StatusCodes.Status400BadRequest));
         }
     }
 }
