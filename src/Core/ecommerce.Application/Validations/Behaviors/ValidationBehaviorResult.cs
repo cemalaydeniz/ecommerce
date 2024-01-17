@@ -3,7 +3,7 @@
     /// <summary>
     /// Contains either the response of the handler or the error list of the validation process
     /// </summary>
-    public class ValidationBehaviorResult<TResponse>
+    public class ValidationBehaviorResult<TResponse> : IValidationBehaviorResult
     {
         /// <inheritdoc/>
         public bool IsSuccess { get; private set; }
