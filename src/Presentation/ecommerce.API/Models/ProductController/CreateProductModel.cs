@@ -1,4 +1,4 @@
-﻿using ecommerce.Domain.Common.ValueObjects;
+﻿using ecommerce.Application.Models.ValueObjects;
 
 namespace ecommerce.API.Models.ProductController
 {
@@ -6,6 +6,6 @@ namespace ecommerce.API.Models.ProductController
     {
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public List<Money> Prices { get; set; } = null!;
+        public List<MoneyModel> Prices { get; set; } = null!;
     }
 }
