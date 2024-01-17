@@ -8,15 +8,15 @@
 **Request Example:**
 ```json
 {
-  "email": "string",
-  "password": "string",
-  "name": "string",
-  "phoneNumber": "string",
+  "email": "example@email.com",
+  "password": "mypassword123",
+  "name": "Joe",
+  "phoneNumber": "+11111111",
   "address": {
-    "street": "string",
-    "zipCode": "string",
-    "city": "string",
-    "country": "string"
+    "street": "Main St.",
+    "zipCode": "10001",
+    "city": "New York",
+    "country": "USA"
   }
 }
 ```
@@ -40,8 +40,8 @@
 **Request Example:**
 ```json
 {
-  "email": "string",
-  "password": "string"
+  "email": "example@email.com",
+  "password": "mypassword123"
 }
 ```
 **Response Example:**
@@ -119,16 +119,16 @@
 **Request Example:**
 ```json
 {
-  "newName": "string",
-  "newPhoneNumber": "string",
-  "titleofAddressToUpdate": "string",
+  "newName": "Joe",
+  "newPhoneNumber": "+111111111",
+  "titleofAddressToUpdate": null,
   "userAddress": {
-    "title": "string",
+    "title": "Work",
     "address": {
-      "street": "string",
-      "zipCode": "string",
-      "city": "string",
-      "country": "string"
+      "street": "Main St.",
+      "zipCode": "10001",
+      "city": "New York",
+      "country": "USA"
     }
   }
 }
@@ -153,9 +153,9 @@
 **Request Example:**
 ```json
 {
-  "currentPassword": "string",
-  "newEmail": "string",
-  "newPassword": "string"
+  "currentPassword": "mypassword123",
+  "newEmail": "example@email.com",
+  "newPassword": null
 }
 ```
 **Response Example:**
