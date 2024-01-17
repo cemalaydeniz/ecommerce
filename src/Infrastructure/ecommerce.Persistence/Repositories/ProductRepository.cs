@@ -42,7 +42,7 @@ namespace ecommerce.Persistence.Repositories
                 return new List<Product>();
 
             return await _dbContext.Products
-                .Where(p => (getSoftDeleted || !p.IsDeleted) && EF.Functions.ILike(p.Name, $"%{name}%"))
+                .Where(p => (getSoftDeleted || !p.IsDeleted) && EF.Functions.Like(p.Name.ToLower(), $"%{name.ToLower()}%"))
                 .OrderBy(p => p.Name)
                 .Skip((page - 1) * pageSize).Take(pageSize)
                 .ToListAsync(cancellationToken);
