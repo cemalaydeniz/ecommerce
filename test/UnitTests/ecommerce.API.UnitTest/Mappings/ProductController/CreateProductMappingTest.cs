@@ -1,6 +1,8 @@
 ﻿using ecommerce.API.Models.ProductController;
 using ecommerce.Application.Features.Commands.CreateProduct;
+using ecommerce.Application.Models.ValueObjects;
 using ecommerce.DomainUnitTest.Aggregates.ProductAggregate.Utilities;
+using ecommerce.DomainUnitTest.Common.Utilities;
 using ecommerce.TestUtility.Fixtures;
 
 namespace ecommerce.API.UnitTest.Mappings.ProductController
@@ -21,7 +23,11 @@ namespace ecommerce.API.UnitTest.Mappings.ProductController
             var model = new CreateProductModel()
             {
                 Name = ProductTestUtility.ValidName,
-                Prices = ProductTestUtility.ValidPrices,
+                Prices = new List<MoneyModel>() { new MoneyModel() 
+                {
+                    CurrencyCode = MoneyTestUtility.ValidCurrencyCode,
+                    Amount = MoneyTestUtility.ValidAmount
+                } },
                 Description = ProductTestUtility.ValidDescription
             };
 
