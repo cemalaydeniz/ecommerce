@@ -7,7 +7,7 @@
 </p>
 
 ## E-Commerce
-This is a backend system that is specifically designed for a company's e-commerce operations. It is created by using .Net Core Web API project, applying Domain-Driven Design, Clean Architecture and Vertical Slice Architecture. Furthermore, Domain Events were implemented and CQRS was utilized for a decoupled and maintable system. The user authentication and authorization were also accomplished through JWT, and unit tests were created to ensure the project's functionality.
+This is a backend system that is specifically designed for a company's e-commerce operations. It is created by using .Net Core Web API project, applying Domain-Driven Design, Clean Architecture and Vertical Slice Architecture. Furthermore, Domain Events were implemented and CQRS was utilized for a decoupled and maintainable system. The user authentication and authorization were also accomplished through JWT, and unit tests were created to ensure the project's functionality.
 
 ## Getting Started
 ### Dependencies
