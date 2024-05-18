@@ -1,13 +1,14 @@
 <p>
- <img src="https://img.shields.io/badge/.Net%20Core-0078D4?style=for-the-badge&logo=dotnet&logoColor=white" />
- <img src="https://img.shields.io/badge/EF%20Core-0078D4?style=for-the-badge&logo=dotnet&logoColor=white" />
+ <img src="https://img.shields.io/badge/C%23-512BD4?style=for-the-badge&logo=csharp&logoColor=white" />
+ <img src="https://img.shields.io/badge/.Net%20Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
+ <img src="https://img.shields.io/badge/EF%20Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" />
  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
  <img src="https://img.shields.io/badge/Stripe-008CDD?style=for-the-badge&logo=stripe&logoColor=white" />
 </p>
 
 ## E-Commerce
-This is a backend system that is specifically designed for a company's e-commerce operations. It is created by using .Net Core Web API project, applying Domain-Driven Design, Clean Architecture and Vertical Slice Architecture. Furthermore, Domain Events were implemented and CQRS was utilized for a decoupled and maintainable system. The user authentication and authorization were also accomplished through JWT, and unit tests were created to ensure the project's functionality.
+This is a backend system that is designed for e-commerce operations. It is created by using .Net Core Web API project, applying Domain-Driven Design, Clean Architecture and Vertical Slice Architecture. Furthermore, Domain Events were implemented and CQRS was utilized for a decoupled and maintainable system. The user authentication and authorization were also accomplished through JWT, and unit tests were created to ensure the project's functionality.
 
 ## Getting Started
 ### Dependencies
